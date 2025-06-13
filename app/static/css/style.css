@@ -3,3 +3,13 @@
     height: 225px; /* Define uma altura fixa para todas as imagens. Ajuste esse valor como quiser! */
     object-fit: cover; /* ESSA É A PROPRIEDADE MÁGICA */
 }
+
+.title-bsb {
+    color: #2563EB;
+    .go {
+        color: #4CAF50;
+    }
+    .exclaim {
+        color: #FACC15;
+    }
+}
