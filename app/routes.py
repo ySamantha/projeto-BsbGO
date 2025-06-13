@@ -188,10 +188,15 @@ def novo_evento():
     if form.validate_on_submit():
         novo_evento = Evento()
         novo_evento.nome = form.nome.data
-        novo_evento.data = form.data_evento.data # <-- MUDANÇA AQUI
+        novo_evento.data = form.data_evento.data
         novo_evento.local = form.local.data
         novo_evento.detalhes = form.detalhes.data
         novo_evento.ponto_id = form.ponto.data
+        
+        if form.imagem.data:
+            picture_file = save_picture(form.imagem.data)
+            novo_evento.imagem_file = picture_file
+        
         db.session.add(novo_evento)
         db.session.commit()
         flash('Evento adicionado com sucesso!', 'success')
@@ -208,6 +213,11 @@ def editar_evento(evento_id):
     form = EventoForm(obj=evento) 
     form.ponto.choices = [(p.id, p.nome) for p in PontoTuristico.query.order_by('nome').all()]
     if form.validate_on_submit():
+        
+        if form.imagem.data:
+            picture_file = save_picture(form.imagem.data)
+            evento.imagem_file = picture_file
+        
         evento.nome = form.nome.data
         evento.data = form.data_evento.data # <-- MUDANÇA AQUI
         evento.local = form.local.data
