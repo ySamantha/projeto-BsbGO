@@ -1,0 +1,5 @@
+.card-img-uniform {
+    width: 100%;  /* Faz a imagem ocupar toda a largura do card */
+    height: 225px; /* Define uma altura fixa para todas as imagens. Ajuste esse valor como quiser! */
+    object-fit: cover; /* ESSA É A PROPRIEDADE MÁGICA */
+}

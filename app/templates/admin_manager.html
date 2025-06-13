@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block title %}Gerenciar {{ title }} - BsbGo!{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h1>Gerenciar {{ title }}</h1>
+    <a href="{{ url_for('main.novo_' + item_type) }}" class="btn btn-primary">Adicionar Novo</a>
+</div>
+
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th class="text-end">Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in items %}
+            <tr>
+                <td>
+                    {{ item.nome }}
+                    {% if item_type == 'evento' and item.ponto %}
+                        <br>
+                        <small class="text-muted">No local: {{ item.ponto.nome }}</small>
+                    {% endif %}
+                </td>
+                <td class="text-end">
+                    {% if item_type == 'ponto' %}
+                        <a href="{{ url_for('main.editar_ponto', ponto_id=item.id) }}" class="btn btn-secondary btn-sm">Editar</a>
+                        <form action="{{ url_for('main.deletar_ponto', ponto_id=item.id) }}" method="POST" class="d-inline" onsubmit="return confirm('Tem certeza que deseja deletar este item?');">
+                            <button type="submit" class="btn btn-danger btn-sm">Deletar</button>
+                        </form>
+                    {% elif item_type == 'evento' %}
+                        <a href="{{ url_for('main.editar_evento', evento_id=item.id) }}" class="btn btn-secondary btn-sm">Editar</a>
+                        <form action="{{ url_for('main.deletar_evento', evento_id=item.id) }}" method="POST" class="d-inline" onsubmit="return confirm('Tem certeza que deseja deletar este item?');">
+                            <button type="submit" class="btn btn-danger btn-sm">Deletar</button>
+                        </form>
+                    {% endif %}
+                </td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="2" class="text-center">Nenhum item encontrado.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

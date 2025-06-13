@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}Login - BsbGo!{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6 col-lg-4">
+        <div class="card p-4 shadow-sm">
+            <h2 class="text-center mb-4">Login</h2>
+            <form method="POST" action="{{ url_for('main.login') }}" novalidate>
+                {{ form.hidden_tag() }}
+                
+                <div class="form-floating mb-3">
+                    {{ form.email(class="form-control", placeholder="E-mail") }}
+                    {{ form.email.label(class="form-label") }}
+                </div>
+                
+                <div class="form-floating mb-3">
+                    {{ form.senha(class="form-control", placeholder="Senha") }}
+                    {{ form.senha.label(class="form-label") }}
+                </div>
+
+                {{ form.submit(class="btn btn-primary w-100 py-2") }}
+            </form>
+            <div class="text-center mt-3">
+                <p>Não tem uma conta? <a href="{{ url_for('main.register') }}">Crie uma agora</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

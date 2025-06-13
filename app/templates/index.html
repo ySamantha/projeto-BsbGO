@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block title %}Página Inicial - BsbGo!{% endblock %}
+
+{% block content %}
+<div class="p-5 mb-4 bg-light rounded-3 text-center">
+    <div class="container-fluid py-5">
+        <h1 class="display-5 fw-bold">Bem-vindo ao BsbGo!</h1>
+        <p class="fs-4">Seu guia completo para explorar o melhor de Brasília. Encontre pontos turísticos, eventos, e muito mais.</p>
+        <form class="d-flex justify-content-center">
+            <input class="form-control me-2 w-50" type="search" placeholder="O que deseja pesquisar?" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Buscar</button>
+        </form>
+    </div>
+</div>
+
+
+<h2 class="mt-4 mb-3">Eventos</h2>
+<div class="row row-cols-1 row-cols-md-3 g-4">
+  {% for evento in eventos %}
+  <div class="col">
+    <div class="card h-100">
+      <img src="{{ url_for('static', filename='uploads/' + evento.imagem_file) }}" class="card-img-top card-img-uniform" alt="{{ evento.nome }}">
+      <div class="card-body">
+        <h5 class="card-title">{{ evento.nome }}</h5>
+        <p class="card-text">{{ evento.detalhes }}</p>
+      </div>
+      <div class="card-footer">
+        <small class="text-muted">{{ evento.local }} – {{ evento.data }}</small>
+      </div>
+    </div>
+  </div>
+  {% else %}
+  <p>Nenhum evento cadastrado no momento.</p>
+  {% endfor %}
+</div>
+
+<h2 class="mt-5 mb-3">Locais Turísticos</h2>
+<div class="row row-cols-1 row-cols-md-3 g-4">
+  {% for ponto in pontos %}
+  <div class="col">
+    <div class="card h-100">
+      <img src="{{ url_for('static', filename='uploads/' + ponto.imagem_file) }}" class="card-img-top card-img-uniform" alt="{{ ponto.nome }}">
+      <div class="card-body">
+        <h5 class="card-title">{{ ponto.nome }}</h5>
+        <p class="card-text">{{ ponto.descricao | truncate(100) }}</p>
+      </div>
+       <div class="card-footer">
+        <small class="text-muted">{{ ponto.horario }}</small>
+      </div>
+    </div>
+  </div>
+   {% else %}
+  <p>Nenhum ponto turístico cadastrado no momento.</p>
+  {% endfor %}
+</div>
+{% endblock %}

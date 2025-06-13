@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block title %}Criar Conta - BsbGo!{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6 col-lg-5">
+        <div class="card p-4 shadow-sm">
+            <h2 class="text-center mb-4">Criar Conta</h2>
+            <form method="POST" action="{{ url_for('main.register') }}" novalidate>
+                {{ form.hidden_tag() }}
+                
+                <div class="form-floating mb-3">
+                    {{ form.nome(class="form-control", placeholder="Nome Completo") }}
+                    {{ form.nome.label(class="form-label") }}
+                </div>
+
+                <div class="form-floating mb-3">
+                    {{ form.email(class="form-control", placeholder="E-mail") }}
+                    {{ form.email.label(class="form-label") }}
+                </div>
+
+                <div class="form-floating mb-3">
+                    {{ form.senha(class="form-control", placeholder="Senha") }}
+                    {{ form.senha.label(class="form-label") }}
+                </div>
+
+                <div class="form-floating mb-3">
+                    {{ form.confirmar(class="form-control", placeholder="Confirmar Senha") }}
+                    {{ form.confirmar.label(class="form-label") }}
+                     {% if form.confirmar.errors %}
+                        <div class="invalid-feedback d-block">
+                            {% for error in form.confirmar.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+
+                <div class="mb-3">
+                    {{ form.tipo.label(class="form-label") }}
+                    {{ form.tipo(class="form-select") }}
+                </div>
+
+                {{ form.submit(class="btn btn-primary w-100 py-2") }}
+            </form>
+             <div class="text-center mt-3">
+                <p>Já tem uma conta? <a href="{{ url_for('main.login') }}">Faça o login</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
