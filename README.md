@@ -4,7 +4,7 @@
 
 ## 📌 Descrição do Projeto
 
-BsbGo! é uma plataforma web desenvolvida como parte da disciplina de Novas Tecnologias do curso de Engenharia de Software da Universidade Católica de Brasília. O principal objetivo do projeto é centralizar informações detalhadas sobre pontos turísticos e eventos culturais em Brasília (Distrito Federal), facilitando o acesso a dados consolidados e atualizados para turistas e moradores.Add commentMore actions
+BsbGo! é uma plataforma web desenvolvida como parte da disciplina de Novas Tecnologias do curso de Engenharia de Software da Universidade Católica de Brasília. O principal objetivo do projeto é centralizar informações detalhadas sobre pontos turísticos e eventos culturais em Brasília (Distrito Federal), facilitando o acesso a dados consolidados e atualizados para turistas e moradores.
 
 A iniciativa busca resolver a dificuldade de encontrar informações turísticas em um mesmo lugar, o que compromete a experiência de visitantes e impacta a economia local. Em uma potencial parceria com a Secretaria de Estado de Turismo, a aplicação BsbGo! visa ser uma solução digital que promove o turismo e a cultura na região.
 
